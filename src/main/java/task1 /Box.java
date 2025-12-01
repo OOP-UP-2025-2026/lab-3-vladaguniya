@@ -1,52 +1,62 @@
 package task1;
 
 public class Box {
-
     private double length;
     private double width;
     private double height;
 
+    // Конструктор
     public Box(double length, double width, double height) {
-        validate(length, "length");
-        validate(width, "width");
-        validate(height, "height");
+        setLength(length);
+        setWidth(width);
+        setHeight(height);
+    }
 
+    // Private сеттери з валідацією
+    private void setLength(double length) {
+        if (length <= 0) {
+            throw new IllegalArgumentException("Введена довжина повинна бути більше за 0");
+        }
         this.length = length;
+    }
+
+    private void setWidth(double width) {
+        if (width <= 0) {
+            throw new IllegalArgumentException("Введена ширина повинна бути більше за 0");
+        }
         this.width = width;
+    }
+
+    private void setHeight(double height) {
+        if (height <= 0) {
+            throw new IllegalArgumentException("Введена висота повинна бути більше за 0");
+        }
         this.height = height;
     }
 
-    // Універсальна валідація
-    private void validate(double value, String field) {
-        if (value <= 0) {
-            throw new IllegalArgumentException(
-                    "Параметр '" + field + "' повинен бути більше нуля"
-            );
-        }
-    }
-
-    public double calculateVolume() {
+    // Методи для розрахунків
+    public double getVolume() {
         return length * width * height;
     }
 
-    public double calculateSideArea() {
-        double lh = length * height;
-        double wh = width * height;
-        return 2 * (lh + wh);
+    public double getLateralSurfaceArea () {
+        return 2 * (length * height + width * height);
     }
 
-    public double calculateTotalArea() {
-        double lw = length * width;
-        double lh = length * height;
-        double wh = width * height;
-        return 2 * (lw + lh + wh);
+    public double getSurfaceArea() {
+        return 2 * (length * width + length * height + width * height);
     }
 
+    // Метод main для тестування
     public static void main(String[] args) {
-        Box b = new Box(5, 6, 8);
+        try {
+            Box box = new Box(5, 6, 8);
 
-        System.out.println("Обʼєм коробки: " + b.calculateVolume());
-        System.out.println("Бічна площа: " + b.calculateSideArea());
-        System.out.println("Повна площа: " + b.calculateTotalArea());
+            System.out.println("Об'єм: " + box.getVolume());
+            System.out.println("Площа бічної поверхні: " + box.getLateralSurfaceArea());
+            System.out.println("Площа поверхні: " + box.getSurfaceArea());
+        } catch (IllegalArgumentException error) {
+            System.out.println("Помилка: " + error.getMessage());
+        }
     }
 }
