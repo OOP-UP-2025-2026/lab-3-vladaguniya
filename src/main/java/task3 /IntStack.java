@@ -3,61 +3,60 @@ package task3;
 import java.util.EmptyStackException;
 
 public class IntStack {
-
-    private int[] elements;
+    private int[] data;
     private int top;
     private static final int INITIAL_CAPACITY = 20;
 
     // Конструктор
     public IntStack() {
-        this.elements = new int[INITIAL_CAPACITY];
-        this.top = 0;
+        this.data = new int[INITIAL_CAPACITY];
+        this.top = 0; // Стек порожній
     }
 
-    // Додавання елемента у стек
+    // Додавання елементу у стек
     public void push(int value) {
-        if (top == elements.length) {
-            expand();
+        if (top == data.length) {
+            grow(); // Розширення початкового масиву, якщо не вистачаж місця
         }
-        elements[top++] = value;
+        data[top++] = value;
     }
 
-    // Видалення та повернення верхнього елемента
+    // Видалення елементу з верхівки стеку
     public int pop() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return elements[--top];
+        return data[--top];
     }
 
-    // Повернення верхнього елемента без видалення
+    // Перегляд елемента на вершині стеку без його винятку
     public int peek() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return elements[top - 1];
+        return data[top - 1];
     }
 
-    // Кількість елементів
+    // Кількість елементів у стеку
     public int size() {
         return top;
     }
 
-    // Перевірка, чи стек порожній
+    // Перевірка стеку на порожність
     public boolean isEmpty() {
         return top == 0;
     }
 
-    // Очистити стек
+    // Повна очистка стеку
     public void clear() {
         top = 0;
     }
 
-    // Розширення масиву
-    private void expand() {
-        int newCapacity = elements.length * 2;
-        int[] newArray = new int[newCapacity];
-        System.arraycopy(elements, 0, newArray, 0, elements.length);
-        elements = newArray;
+    // Можливість розширити масив
+    private void grow() {
+        int newCapacity = data.length * 2;
+        int[] newData = new int[newCapacity];
+        System.arraycopy(data, 0, newData, 0, data.length);
+        data = newData;
     }
 }
