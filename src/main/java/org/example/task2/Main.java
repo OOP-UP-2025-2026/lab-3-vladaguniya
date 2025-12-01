@@ -4,17 +4,16 @@ public class Main {
     public static void main(String[] args) {
 
         Cart cart = new Cart(10);
-
-        cart.add(new Item(1, "iPhone 15 Pro", 45999));
-        cart.add(new Item(2, "Acer Aspire 7", 28999));
-        cart.add(new Item(3, "Sony Bravia 50\" 4K HDR", 24999));
-        cart.add(new Item(4, "Whirlpool W7 Пральна машина", 16999));
-        cart.add(new Item(5, "LG InstaView Холодильник", 33999));
-        cart.add(new Item(6, "Jura E8 Кавомашина", 38999));
-        cart.add(new Item(7, "Electrolux Електрична плита", 12999));
-        cart.add(new Item(8, "Xiaomi G10 Пилосос", 9499));
-        cart.add(new Item(9, "Panasonic NN-SD27 Мікрохвильова піч", 3999));
-        cart.add(new Item(10, "Remington AirStyle Фен", 1999));
+        cart.add(new Item(1, "Samsung Galaxy S23", 27999));
+        cart.add(new Item(2, "Lenovo IdeaPad 3", 19499));
+        cart.add(new Item(3, "LG 55\" 4K Smart TV", 15999));
+        cart.add(new Item(4, "Bosch Serie 6 Пральна машина", 14799));
+        cart.add(new Item(5, "Samsung RB34 Холодильник", 22399));
+        cart.add(new Item(6, "De'Longhi Magnifica S Кавоварка", 10599));
+        cart.add(new Item(7, "Gorenje Електрична плита", 9999));
+        cart.add(new Item(8, "Dyson V11 Пилосос", 16499));
+        cart.add(new Item(9, "Samsung ME83K Мікрохвильова піч", 3199));
+        cart.add(new Item(10, "Philips DryCare Фен", 1499));
 
         System.out.println(cart);
 
@@ -22,7 +21,7 @@ public class Main {
 
         System.out.println(cart);
 
-        Order order = new Order(1L, "Vlada");
+        Order order = new Order(1L, "John");
         String bill = order.formOrderBill(cart);
         System.out.println(bill);
     }
